@@ -54,6 +54,7 @@ export default {
 
   updateFromLanguage:function( value ){
     this.CurrentLanguage = value;
+    this.translate();
   },
 
   updateToLanguage:function( value ){
@@ -81,7 +82,7 @@ translate:function(){
 
   },
 
-    validateResponse:function(response){
+  validateResponse:function(response){
 
         if (response.status === 422) {
 

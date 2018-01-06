@@ -6,7 +6,7 @@
 
 <div id="imageholder">
 
-<select selected="cow" v-model="FromLanguage" @change="changeFromLanguage">
+<select v-model="FromLanguage" @change="changeFromLanguage">
 
 <option v-for="(lang, code) in AvailableLanguages" :value="code"> {{ lang }} </option>
   
@@ -69,19 +69,25 @@ export default {
 
 methods: {
 
-  changeFromLanguage:function( value ) {
-    let LanguageCode = value.target.value;
+  changeFromLanguage:function( ev ) {
+    let LanguageCode = ev.target.value;
     this.$emit('updateFromLanguage', LanguageCode)
   },
 
-  changeToLanguage:function( value ) {
-    let LanguageCode = value.target.value;
+  changeToLanguage:function( ev ) {
+    let LanguageCode = ev.target.value;
     this.$emit('updateToLanguage', LanguageCode)
   },
 
-  submit:function( text ){
+  submit:function( ev ){
+
     let Word = this.Text
+
+    if ( Word ) {
+
     this.$emit('translate', Word)
+    
+    }
   },
 
   translateSpeak:function(){
